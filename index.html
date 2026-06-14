@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM Portfolio- Soumya Verma </title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0b0b0f;
+  --bg2:       #111117;
+  --bg3:       #18181f;
+  --bg4:       #1f1f28;
+  --border:    rgba(255,255,255,0.07);
+  --border2:   rgba(255,255,255,0.12);
+  --text:      #e8e4de;
+  --muted:     #8b8580;
+  --muted2:    #5a5550;
+  --accent:    #f0c060;
+  --accent2:   #c89030;
+
+  /* brand colours */
+  --c-sb:    #00a862;   /* starbucks green */
+  --c-sp:    #1ed760;   /* spotify green */
+  --c-nk:    #ff4500;   /* nike orange-red */
+  --c-or:    #1a1a1a;   /* oreo dark */
+  --c-mm:    #e74c3c;   /* mmt red */
+
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px;}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;background:rgba(11,11,15,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:var(--accent);letter-spacing:.04em;cursor:pointer;}
+.nav-tabs{display:flex;gap:2px;}
+.ntab{background:none;border:none;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;padding:6px 14px;border-radius:8px;transition:all .15s;}
+.ntab:hover{color:var(--text);background:var(--bg3);}
+.ntab.active{color:var(--accent);background:var(--bg3);}
+
+/* ── VIEWS ── */
+.view{display:none;animation:fadeUp .3s ease;}
+.view.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+
+/* ── HOMEPAGE ── */
+.home-wrap{max-width:1080px;margin:0 auto;padding:4rem 2rem 6rem;}
+.home-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;}
+.home-h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.6rem,7vw,5.2rem);line-height:.96;letter-spacing:-.01em;margin-bottom:1.5rem;}
+.home-h1 em{font-style:italic;color:var(--accent);}
+.home-sub{font-size:16px;color:var(--muted);line-height:1.8;max-width:560px;margin-bottom:3rem;}
+.home-stats{display:flex;gap:3rem;margin-bottom:3rem;flex-wrap:wrap;}
+.hs-item{border-left:2px solid var(--accent2);padding-left:1rem;}
+.hs-val{font-family:'Syne',sans-serif;font-weight:700;font-size:1.6rem;color:var(--text);}
+.hs-label{font-size:11px;color:var(--muted);letter-spacing:.05em;}
+.divider-gold{width:100%;height:1px;background:linear-gradient(90deg,var(--accent),transparent 70%);margin:2rem 0;}
+
+/* ── CASE INDEX GRID ── */
+.case-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;max-width:1080px;margin:0 auto;}
+.case-card{background:var(--bg2);padding:1.75rem;cursor:pointer;transition:background .15s;display:flex;flex-direction:column;gap:.75rem;text-decoration:none;}
+.case-card:hover{background:var(--bg3);}
+.cc-num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2);}
+.cc-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.cc-brand{font-family:'Syne',sans-serif;font-weight:700;font-size:1.25rem;line-height:1;}
+.cc-idea{font-size:13px;color:var(--muted);line-height:1.6;}
+.cc-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:99px;margin-top:.25rem;}
+
+/* ── CASE STUDY PAGE ── */
+.cs-wrap{max-width:1080px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+.back-btn{background:none;border:1px solid var(--border2);border-radius:8px;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;padding:6px 14px;cursor:pointer;margin-bottom:2rem;display:inline-flex;align-items:center;gap:6px;transition:all .15s;}
+.back-btn:hover{color:var(--text);background:var(--bg3);}
+
+/* ── HERO BAND ── */
+.cs-hero{border-radius:var(--r-lg);padding:3rem;margin-bottom:2rem;position:relative;overflow:hidden;}
+.cs-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.45) 0%,transparent 60%);pointer-events:none;}
+.cs-hero-inner{position:relative;z-index:1;}
+.cs-hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;}
+.ch-left .ch-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-bottom:.75rem;}
+.ch-left h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.5rem);line-height:1;margin-bottom:1rem;}
+.ch-hook{font-size:15px;opacity:.8;max-width:500px;line-height:1.7;font-style:italic;}
+.ch-right{text-align:right;flex-shrink:0;}
+.ch-right .ch-rlabel{font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.45;margin-bottom:.5rem;}
+.ch-right .ch-rval{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;opacity:.9;}
+
+/* ── STATS ROW ── */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;margin-bottom:1.5rem;}
+.stat-cell{background:var(--bg2);padding:1.1rem 1.25rem;}
+.sc-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:4px;}
+.sc-val{font-family:'Syne',sans-serif;font-weight:700;font-size:1.5rem;color:var(--text);}
+.sc-val.red{color:#e85d5d;}.sc-val.green{color:#5de8a0;}.sc-val.gold{color:var(--accent);}
+.sc-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+
+/* ── SECTION BLOCKS ── */
+.section-block{margin-bottom:1.5rem;}
+.sb-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted2);margin-bottom:.75rem;display:flex;align-items:center;gap:8px;}
+.sb-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRID HELPERS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;}
+.gcol{grid-column:1/-1;}
+
+/* ── CARD ── */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-md);padding:1.35rem;}
+.card-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:.5rem;font-weight:600;}
+.card-h{font-family:'Syne',sans-serif;font-weight:600;font-size:1rem;margin-bottom:.6rem;color:var(--text);}
+.card-p{font-size:13.5px;color:var(--muted);line-height:1.75;}
+.card-p strong{color:var(--text);font-weight:500;}
+.card.dark{background:var(--bg3);}
+.card.invert{background:var(--text);color:var(--bg);}
+.card.invert .card-h{color:var(--bg);}
+.card.invert .card-p{color:var(--bg2);}
+.card.invert .card-label{color:var(--muted2);}
+
+/* ── BIG IDEA ── */
+.big-idea{border-radius:var(--r-lg);padding:2.25rem;margin-bottom:1.5rem;}
+.bi-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:.75rem;opacity:.6;}
+.bi-h{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.5rem,3.5vw,2.4rem);line-height:1.05;margin-bottom:1rem;}
+.bi-p{font-size:14.5px;line-height:1.85;opacity:.82;max-width:700px;}
+
+/* ── RICE TABLE ── */
+.rice-wrap{border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;margin-bottom:1.5rem;}
+.rice-table{width:100%;border-collapse:collapse;}
+.rice-table th{background:var(--bg3);text-align:left;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);padding:10px 14px;border-bottom:1px solid var(--border);font-weight:500;}
+.rice-table td{padding:11px 14px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--border);vertical-align:top;}
+.rice-table tr:last-child td{border-bottom:none;}
+.rice-table td:first-child{color:var(--text);font-weight:500;}
+.rice-score{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;padding:3px 8px;border-radius:6px;background:rgba(240,192,96,.12);color:var(--accent);}
+.rice-top td{background:rgba(240,192,96,.05);}
+
+/* ── ROADMAP ── */
+.roadmap{display:flex;gap:0;border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;margin-bottom:1.5rem;}
+.rm-col{flex:1;border-right:1px solid var(--border);}
+.rm-col:last-child{border-right:none;}
+.rm-head{background:var(--bg3);padding:.85rem 1.1rem;border-bottom:1px solid var(--border);}
+.rm-phase{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2);}
+.rm-time{font-size:12px;font-weight:600;color:var(--text);margin-top:2px;}
+.rm-body{padding:1rem 1.1rem;}
+.rm-item{font-size:12.5px;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--border);line-height:1.5;}
+.rm-item:last-child{border-bottom:none;}
+.rm-item strong{color:var(--text);font-weight:500;}
+.rm-metric{font-size:11px;color:var(--muted2);margin-top:4px;font-style:italic;}
+
+/* ── PRD ── */
+.prd-stories{list-style:none;}
+.prd-story{padding:.75rem 0;border-bottom:1px solid var(--border);font-size:13.5px;color:var(--muted);line-height:1.6;}
+.prd-story:last-child{border-bottom:none;}
+.prd-story .role{color:var(--accent);font-weight:600;font-size:12px;}
+
+/* ── KPI ── */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem;}
+.kpi-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-md);padding:1.25rem;}
+.kpi-type{font-size:9px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;margin-bottom:.4rem;}
+.kpi-type.acq{color:#5da8e8;}.kpi-type.eng{color:#a87de8;}.kpi-type.ret{color:#5de8a0;}.kpi-type.rev{color:var(--accent);}
+.kpi-name{font-family:'Syne',sans-serif;font-weight:600;font-size:.95rem;color:var(--text);margin-bottom:.3rem;}
+.kpi-target{font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:500;color:var(--text);margin-bottom:.3rem;}
+.kpi-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+
+/* ── WIREFRAME ── */
+.wf-container{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-md);padding:1.5rem;margin-bottom:1.5rem;}
+.wf-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);margin-bottom:1rem;}
+.wf-phone{width:200px;background:var(--bg4);border-radius:20px;border:1px solid var(--border2);padding:16px 12px;margin:0 auto;}
+.wf-phones{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;}
+.wf-screen-title{font-size:10px;font-weight:600;color:var(--muted2);text-align:center;margin-bottom:8px;letter-spacing:.08em;}
+.wf-bar{height:8px;background:var(--border2);border-radius:4px;margin-bottom:6px;}
+.wf-bar.short{width:60%;}
+.wf-bar.xshort{width:40%;}
+.wf-block{background:var(--bg);border-radius:8px;padding:8px 10px;margin-bottom:6px;border:1px solid var(--border);}
+.wf-row{display:flex;gap:6px;margin-bottom:6px;}
+.wf-sq{width:36px;height:36px;border-radius:8px;flex-shrink:0;}
+.wf-lines{flex:1;}
+.wf-btn{background:rgba(240,192,96,.15);border:1px solid var(--accent2);border-radius:6px;padding:6px;text-align:center;font-size:9px;color:var(--accent);margin-top:4px;}
+.wf-chip{display:inline-block;background:var(--border);border-radius:99px;padding:2px 8px;font-size:8px;color:var(--muted);margin:2px;}
+.wf-caption{font-size:11px;color:var(--muted2);text-align:center;margin-top:8px;}
+
+/* ── HONEST SECTION ── */
+.honest-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+.honest-card{border-radius:var(--r-sm);padding:1.1rem;border:1px solid var(--border);}
+.hc-type{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.4rem;}
+.hc-type.risk{color:#e85d5d;}.hc-type.bet{color:#5de8a0;}
+.honest-card p{font-size:13px;color:var(--muted);line-height:1.6;}
+.honest-card p strong{color:var(--text);}
+
+/* ── LEARN SECTION ── */
+.learn-box{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r-md);padding:1.5rem;margin-bottom:1.5rem;}
+.lb-title{font-family:'Syne',sans-serif;font-weight:600;font-size:1rem;color:var(--text);margin-bottom:.75rem;}
+.lb-body{font-size:13.5px;color:var(--muted);line-height:1.75;}
+.lb-body strong{color:var(--text);font-weight:500;}
+
+/* ── ABOUT ── */
+.about-wrap{max-width:760px;margin:0 auto;padding:4rem 2rem 6rem;}
+.about-h{font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;margin-bottom:1rem;}
+.about-intro{font-size:16px;color:var(--muted);line-height:1.85;margin-bottom:2rem;}
+.about-framework{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-md);padding:1.5rem;margin-bottom:1rem;}
+.af-step{display:flex;gap:1rem;margin-bottom:1rem;align-items:flex-start;}
+.af-step:last-child{margin-bottom:0;}
+.af-num{width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;}
+.af-text h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.af-text p{font-size:13px;color:var(--muted);}
+.copy-tip{background:rgba(240,192,96,.07);border:1px solid rgba(240,192,96,.2);border-radius:var(--r-md);padding:1.25rem;margin-top:2rem;}
+.copy-tip h4{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:.5rem;}
+.copy-tip p{font-size:13px;color:var(--muted);line-height:1.6;}
+.code-box{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:.75rem 1rem;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);line-height:1.8;margin-top:.75rem;white-space:pre-wrap;}
+
+@media(max-width:720px){
+  .g2,.g3,.honest-grid,.roadmap{grid-template-columns:1fr;flex-direction:column;}
+  .roadmap{flex-direction:column;}.rm-col{border-right:none;border-bottom:1px solid var(--border);}
+  .rm-col:last-child{border-bottom:none;}
+  .cs-hero-top{flex-direction:column;}
+  .wf-phones{gap:1rem;}
+  nav{padding:0 1rem;}.nav-tabs{gap:0;}
+  .ntab{padding:6px 8px;font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo" onclick="showView('home')">PM Portfolio</div>
+  <div class="nav-tabs">
+    <button class="ntab active" onclick="showView('home');setTab(this)">Home</button>
+    <button class="ntab" onclick="showView('cases');setTab(this)">Case Studies</button>
+    <button class="ntab" onclick="showView('about');setTab(this)">About</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════ HOME ══════════════════════════════ -->
+<div id="view-home" class="view active">
+<div class="home-wrap">
+  <div class="home-eyebrow">Product Management Portfolio</div>
+  <h1 class="home-h1">I find what's<br><em>broken</em> and<br>build the fix.</h1>
+  <p class="home-sub">Five real brands. Five product opportunities nobody's acted on. Each case study follows the full PM process- from user research and problem framing to RICE prioritisation, PRD, wireframes, and success metrics.</p>
+  <div class="home-stats">
+    <div class="hs-item"><div class="hs-val">5</div><div class="hs-label">Case studies</div></div>
+    <div class="hs-item"><div class="hs-val">RICE</div><div class="hs-label">Framework used</div></div>
+    <div class="hs-item"><div class="hs-val">PRD</div><div class="hs-label">For every feature</div></div>
+    <div class="hs-item"><div class="hs-val">KPIs</div><div class="hs-label">Data-driven success</div></div>
+  </div>
+  <div class="divider-gold"></div>
+  <div class="case-grid">
+
+    <div class="case-card" onclick="showCase('sb')">
+      <div class="cc-num">01</div>
+      <div class="cc-dot" style="background:rgba(0,168,98,.15);">☕</div>
+      <div class="cc-brand" style="color:var(--c-sb);">Starbucks</div>
+      <div class="cc-idea">Starbucks × Diet Coke collab menu + personalised collectible tumblers to pull back café-loyal customers.</div>
+      <span class="cc-tag" style="background:rgba(0,168,98,.12);color:var(--c-sb);">F&B · Collaboration</span>
+    </div>
+
+    <div class="case-card" onclick="showCase('sp')">
+      <div class="cc-num">02</div>
+      <div class="cc-dot" style="background:rgba(30,215,96,.12);">🎵</div>
+      <div class="cc-brand" style="color:var(--c-sp);">Spotify India</div>
+      <div class="cc-idea">"Celebrity Picks"- a premium-only curated playlist feature that makes Premium feel irreplaceable.</div>
+      <span class="cc-tag" style="background:rgba(30,215,96,.1);color:var(--c-sp);">Tech · Monetisation</span>
+    </div>
+
+    <div class="case-card" onclick="showCase('nk')">
+      <div class="cc-num">03</div>
+      <div class="cc-dot" style="background:rgba(255,69,0,.12);">👟</div>
+      <div class="cc-brand" style="color:var(--c-nk);">Nike</div>
+      <div class="cc-idea">"Cities & Routes"- a hyperlocal shoe line where each design tells the story of a city's streets and culture.</div>
+      <span class="cc-tag" style="background:rgba(255,69,0,.1);color:var(--c-nk);">Fashion · Culture</span>
+    </div>
+
+    <div class="case-card" onclick="showCase('or')">
+      <div class="cc-num">04</div>
+      <div class="cc-dot" style="background:rgba(255,255,255,.07);">🍪</div>
+      <div class="cc-brand" style="color:#e0e0e0;">Oreo</div>
+      <div class="cc-idea">The "Build Your Oreo" kit- plain biscuits + a jar of cream + a spatula, sold as a customisable experience.</div>
+      <span class="cc-tag" style="background:rgba(255,255,255,.07);color:#aaa;">FMCG · Product Innovation</span>
+    </div>
+
+    <div class="case-card" onclick="showCase('mm')">
+      <div class="cc-num">05</div>
+      <div class="cc-dot" style="background:rgba(231,76,60,.12);">✈️</div>
+      <div class="cc-brand" style="color:var(--c-mm);">MakeMyTrip</div>
+      <div class="cc-idea">"TripSquad"- a collaborative group itinerary feature where AI resolves conflicts so friends stop fighting in WhatsApp.</div>
+      <span class="cc-tag" style="background:rgba(231,76,60,.1);color:var(--c-mm);">Travel · AI Feature</span>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════ CASES INDEX ══════════════════════════════ -->
+<div id="view-cases" class="view">
+<div class="home-wrap" style="padding-top:2.5rem;">
+  <div class="home-eyebrow">All case studies</div>
+  <h2 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.8rem;margin-bottom:.5rem;">5 PM Projects</h2>
+  <p style="color:var(--muted);margin-bottom:2rem;font-size:14px;">Each follows the full product management process. Click to read.</p>
+  <div class="case-grid">
+    <div class="case-card" onclick="showCase('sb')"><div class="cc-num">01</div><div class="cc-brand" style="color:var(--c-sb);">Starbucks × Diet Coke</div><div class="cc-idea">Collab menu + collectible tumblers to recover lost café traffic</div><span class="cc-tag" style="background:rgba(0,168,98,.12);color:var(--c-sb);">F&B</span></div>
+    <div class="case-card" onclick="showCase('sp')"><div class="cc-num">02</div><div class="cc-brand" style="color:var(--c-sp);">Spotify Celebrity Picks</div><div class="cc-idea">Premium-only curated celebrity playlists with content protection</div><span class="cc-tag" style="background:rgba(30,215,96,.1);color:var(--c-sp);">Tech</span></div>
+    <div class="case-card" onclick="showCase('nk')"><div class="cc-num">03</div><div class="cc-brand" style="color:var(--c-nk);">Nike Cities & Routes</div><div class="cc-idea">Hyperlocal shoe line celebrating city culture and street identity</div><span class="cc-tag" style="background:rgba(255,69,0,.1);color:var(--c-nk);">Fashion</span></div>
+    <div class="case-card" onclick="showCase('or')"><div class="cc-num">04</div><div class="cc-brand" style="color:#e0e0e0;">Oreo Build Your Own</div><div class="cc-idea">Plain biscuit + cream jar + spatula- customisable product kit</div><span class="cc-tag" style="background:rgba(255,255,255,.07);color:#aaa;">FMCG</span></div>
+    <div class="case-card" onclick="showCase('mm')"><div class="cc-num">05</div><div class="cc-brand" style="color:var(--c-mm);">MakeMyTrip TripSquad</div><div class="cc-idea">AI-powered group itinerary builder- no more WhatsApp fights</div><span class="cc-tag" style="background:rgba(231,76,60,.1);color:var(--c-mm);">Travel</span></div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════ CASE: STARBUCKS ══════════════════════════════ -->
+<div id="cs-sb" class="view">
+<div class="cs-wrap">
+  <button class="back-btn" onclick="showView('cases')">← All case studies</button>
+  <div class="cs-hero" style="background:linear-gradient(135deg,#003d2a 0%,#00a862 100%);color:#e8f5ee;">
+    <div class="cs-hero-inner">
+      <div class="cs-hero-top">
+        <div class="ch-left">
+          <div class="ch-eyebrow">Case 01 · F&B · Collaboration Strategy</div>
+          <h1>Starbucks ×<br>Diet Coke</h1>
+          <div class="ch-hook">"What if Starbucks stopped competing with cafés on price and started competing on an experience nobody else can offer?"</div>
+        </div>
+        <div class="ch-right">
+          <div class="ch-rlabel">If I was the PM</div>
+          <div class="ch-rval">I'd launch a<br>co-branded collab<br>menu + tumbler line</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-cell"><div class="sc-label">Global same-store sales</div><div class="sc-val red">−7%</div><div class="sc-sub">YoY decline, Q4 2024</div></div>
+    <div class="stat-cell"><div class="sc-label">US transactions</div><div class="sc-val red">−6%</div><div class="sc-sub">Year on year</div></div>
+    <div class="stat-cell"><div class="sc-label">Market share (US)</div><div class="sc-val red">48%</div><div class="sc-sub">Down from 52% in 2023</div></div>
+    <div class="stat-cell"><div class="sc-label">India losses</div><div class="sc-val red">₹82 Cr</div><div class="sc-sub">FY2024 net loss</div></div>
+    <div class="stat-cell"><div class="sc-label">Opportunity</div><div class="sc-val gold">Gen Z</div><div class="sc-sub">Café-loyal, experience-driven</div></div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">01- Problem Statement</div>
+    <div class="g2">
+      <div class="card"><div class="card-label">Who is the user?</div><div class="card-h">The Gen Z café-switcher</div><div class="card-p">Urban 20–28 year olds who used to be Starbucks loyalists but are now spending ₹150–250 at independent cafés instead. They find Starbucks <strong>too corporate, too predictable, and no longer worth the premium</strong> for a commodity experience.</div></div>
+      <div class="card"><div class="card-label">What's the pain point?</div><div class="card-h">Starbucks feels like a utility, not a treat.</div><div class="card-p">The mobile-order-and-pickup model turned Starbucks stores into fulfillment centers. <strong>60%+ of US orders are mobile pickup.</strong> The "third place" experience- the reason people paid $7 for coffee- has disappeared. There's nothing to come in for anymore.</div></div>
+      <div class="card gcol"><div class="card-label">User research signal</div><div class="card-p">Reddit, Twitter/X, and Google reviews analysis across India + US: top complaints are "feels like a fast food pickup," "overpriced for what it is now," and "local cafes just feel more special." <strong>The product problem: Starbucks lost its experience identity while keeping premium pricing.</strong></div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">02- The Idea</div>
+    <div class="big-idea" style="background:linear-gradient(135deg,#003d2a,#001a12);color:#e8f5ee;">
+      <div class="bi-kicker">Product concept</div>
+      <div class="bi-h">The "Black & Green" Collab Menu</div>
+      <div class="bi-p">A limited-run menu where Starbucks crafts drinks using Diet Coke as a base- cold brew Diet Coke floats, espresso Diet Coke tonics, sparkling coffee lemonades. <strong style="color:#5de8a0;">Sold exclusively with a personalised Diet Coke × Starbucks tumbler</strong>- limited edition, different designs every season, engraved with your name. The tumbler is the product. The drink is the excuse to buy it. This gives people a reason to physically walk in, wait, photograph, and post- which is the experience Starbucks lost.</div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">03- RICE Prioritisation (10 features evaluated, top 3 shown)</div>
+    <div class="rice-wrap">
+      <table class="rice-table">
+        <thead><tr><th>Feature</th><th>Reach</th><th>Impact</th><th>Confidence</th><th>Effort</th><th>RICE Score</th></tr></thead>
+        <tbody>
+          <tr class="rice-top"><td>🥇 Co-branded collab menu + tumbler</td><td>8/10</td><td>9/10</td><td>80%</td><td>3/10</td><td><span class="rice-score">240</span></td></tr>
+          <tr class="rice-top"><td>🥈 Personalised tumbler engraving in-store</td><td>6/10</td><td>8/10</td><td>75%</td><td>4/10</td><td><span class="rice-score">180</span></td></tr>
+          <tr class="rice-top"><td>🥉 Seasonal "comeback" menu (reserve feel)</td><td>7/10</td><td>7/10</td><td>70%</td><td>5/10</td><td><span class="rice-score">98</span></td></tr>
+          <tr><td>Loyalty double-points on collab items</td><td>9/10</td><td>5/10</td><td>60%</td><td>2/10</td><td><span class="rice-score">135</span></td></tr>
+          <tr><td>Social share reward (UGC discount)</td><td>7/10</td><td>6/10</td><td>55%</td><td>3/10</td><td><span class="rice-score">77</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--muted2);">RICE = (Reach × Impact × Confidence) ÷ Effort. Higher score = build first.</p>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">04- Wireframe (Low-Fidelity)</div>
+    <div class="wf-container">
+      <div class="wf-label">App screens: Discovery → Product → Customise</div>
+      <div class="wf-phones">
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">HOME- Collab Banner</div>
+            <div style="background:rgba(0,168,98,.15);border-radius:8px;padding:10px;margin-bottom:8px;border:1px solid rgba(0,168,98,.2);">
+              <div style="font-size:8px;color:#5de8a0;font-weight:600;">NEW DROP ✦</div>
+              <div class="wf-bar" style="background:rgba(0,168,98,.3);"></div>
+              <div class="wf-bar short" style="background:rgba(0,168,98,.2);"></div>
+              <div class="wf-btn">Explore Black & Green →</div>
+            </div>
+            <div class="wf-bar"></div><div class="wf-bar short"></div>
+            <div class="wf-row"><div class="wf-sq" style="background:var(--bg4);"></div><div class="wf-lines"><div class="wf-bar"></div><div class="wf-bar short"></div></div></div>
+          </div>
+          <div class="wf-caption">Home: collab banner</div>
+        </div>
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">MENU- Collab Items</div>
+            <div class="wf-block">
+              <div style="font-size:8px;color:var(--accent);">COLLAB ITEM</div>
+              <div class="wf-bar"></div><div class="wf-bar short"></div>
+              <div style="display:flex;justify-content:space-between;margin-top:4px;">
+                <span class="wf-chip">Limited</span>
+                <span style="font-size:9px;color:var(--accent);">₹449</span>
+              </div>
+            </div>
+            <div class="wf-block">
+              <div class="wf-bar"></div><div class="wf-bar xshort"></div>
+            </div>
+            <div class="wf-btn">Add Tumbler (+₹799)</div>
+          </div>
+          <div class="wf-caption">Menu: limited item</div>
+        </div>
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">CUSTOMISE- Your Tumbler</div>
+            <div style="background:var(--bg4);border-radius:10px;height:60px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--muted);">[ Tumbler Preview ]</div>
+            <div class="wf-bar xshort"></div>
+            <div style="display:flex;gap:4px;margin:6px 0;">
+              <div style="width:18px;height:18px;border-radius:50%;background:#003d2a;"></div>
+              <div style="width:18px;height:18px;border-radius:50%;background:#00a862;"></div>
+              <div style="width:18px;height:18px;border-radius:50%;background:#c8340a;"></div>
+              <div style="width:18px;height:18px;border-radius:50%;background:#1a3a8a;"></div>
+            </div>
+            <div class="wf-bar short"></div>
+            <div class="wf-btn">Add Your Name</div>
+          </div>
+          <div class="wf-caption">Customise: pick colour + name</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">05- PRD: User Stories</div>
+    <div class="card">
+      <ul class="prd-stories">
+        <li class="prd-story"><span class="role">As a Gen Z Starbucks user</span>, I want to see a limited-edition collab menu so that I have a new reason to walk into a store instead of ordering online.</li>
+        <li class="prd-story"><span class="role">As a customer</span>, I want to personalise and preview my tumbler in the app before purchasing so I feel like the product is mine before I even receive it.</li>
+        <li class="prd-story"><span class="role">As a Starbucks Rewards member</span>, I want double stars on collab purchases so that my loyalty is rewarded for trying new things.</li>
+        <li class="prd-story"><span class="role">As a store manager</span>, I want clear prep instructions for collab drinks so that order time stays under 4 minutes (CEO's stated target).</li>
+        <li class="prd-story"><span class="role">As a brand manager</span>, I want to track UGC posts with the collab hashtag so I can measure organic reach vs. paid media spend.</li>
+      </ul>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);">
+        <div class="card-label">Technical constraints</div>
+        <div class="card-p">Tumbler personalisation requires a vendor integration. Menu items need FDA/FSSAI compliance approval. Diet Coke partnership requires a co-marketing agreement (likely 6–12 weeks). App update needed for collab section- estimate 3 sprints.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">06- Success Metrics (KPIs)</div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-type acq">Acquisition</div><div class="kpi-name">New in-store visits</div><div class="kpi-target">+18%</div><div class="kpi-desc">Foot traffic during collab window vs prior 4-week baseline</div></div>
+      <div class="kpi-card"><div class="kpi-type eng">Engagement</div><div class="kpi-name">UGC posts (collab hashtag)</div><div class="kpi-target">50K+</div><div class="kpi-desc">Organic posts in first 30 days- measured via social listening tool</div></div>
+      <div class="kpi-card"><div class="kpi-type ret">Retention</div><div class="kpi-name">Repeat collab purchase</div><div class="kpi-target">30%</div><div class="kpi-desc">% of tumbler buyers who return within 14 days</div></div>
+      <div class="kpi-card"><div class="kpi-type rev">Revenue</div><div class="kpi-name">Tumbler attach rate</div><div class="kpi-target">40%</div><div class="kpi-desc">% of collab drink buyers who add a tumbler (high-margin item)</div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">07- Roadmap</div>
+    <div class="roadmap">
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 1</div><div class="rm-time">Weeks 1–6</div></div><div class="rm-body"><div class="rm-item"><strong>Partnership brief</strong> finalised with Coca-Cola/Diet Coke team</div><div class="rm-item"><strong>Menu R&D</strong>- 4 drinks tested internally</div><div class="rm-item"><strong>Vendor sourcing</strong> for personalised tumbler manufacturing</div><div class="rm-metric">Gate: Legal sign-off + drink test NPS &gt;70</div></div></div>
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 2</div><div class="rm-time">Weeks 7–14</div></div><div class="rm-body"><div class="rm-item"><strong>App build</strong>- collab section + tumbler customiser (3 sprints)</div><div class="rm-item"><strong>Staff training</strong> in 50 pilot stores</div><div class="rm-item"><strong>Soft launch</strong> in Delhi, Mumbai, Bangalore</div><div class="rm-metric">Gate: Pilot NPS &gt;75, foot traffic +15%</div></div></div>
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 3</div><div class="rm-time">Weeks 15–24</div></div><div class="rm-body"><div class="rm-item"><strong>National rollout</strong> across all India stores</div><div class="rm-item"><strong>Season 2</strong> design announced during rollout</div><div class="rm-item"><strong>Global brief</strong> prepared for US + UK markets</div><div class="rm-metric">Gate: Attach rate &gt;35%, UGC 50K+ posts</div></div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">08- Risks & What I'd Iterate On</div>
+    <div class="honest-grid">
+      <div class="honest-card" style="background:rgba(232,93,93,.05);"><div class="hc-type risk">Risk</div><p>Diet Coke's brand team may not align on messaging- they're a separate company with their own brand guidelines. Partnership negotiation could delay launch by 3–4 months.</p></div>
+      <div class="honest-card" style="background:rgba(93,232,160,.05);"><div class="hc-type bet">What I'd iterate on</div><p>If tumbler attach rate is below 25%, I'd A/B test a lower-priced "mini tumbler" at ₹499 vs the full ₹799. The goal is to get it in hands- then upsell the next season's drop.</p></div>
+    </div>
+    <div class="learn-box"><div class="lb-title">📖 What This Taught Me About PM Thinking</div><div class="lb-body">The instinct here was to solve the "café competition" problem with a price cut. But that's a race to the bottom. The real PM insight is that <strong>Starbucks doesn't have a price problem- it has an experience problem.</strong> The collab menu doesn't reduce the price. It increases the value of showing up. That's the difference between marketing thinking and product thinking.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════ CASE: SPOTIFY ══════════════════════════════ -->
+<div id="cs-sp" class="view">
+<div class="cs-wrap">
+  <button class="back-btn" onclick="showView('cases')">← All case studies</button>
+  <div class="cs-hero" style="background:linear-gradient(135deg,#0d1f0d 0%,#0a3a1a 100%);color:#e8f5e8;">
+    <div class="cs-hero-inner">
+      <div class="cs-hero-top">
+        <div class="ch-left">
+          <div class="ch-eyebrow">Case 02 · Tech · Monetisation Feature</div>
+          <h1>Spotify<br>Celebrity Picks</h1>
+          <div class="ch-hook">"When people won't pay for 'better audio quality,' give them something they can't screenshot their way out of."</div>
+        </div>
+        <div class="ch-right">
+          <div class="ch-rlabel">If I was the PM</div>
+          <div class="ch-rval">Premium-only<br>celebrity curated<br>playlists- no leaks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-cell"><div class="sc-label">Spotify global MAU</div><div class="sc-val green">639M</div><div class="sc-sub">As of Q2 2024</div></div>
+    <div class="stat-cell"><div class="sc-label">Premium subscribers</div><div class="sc-val">251M</div><div class="sc-sub">Only 39% of MAUs pay</div></div>
+    <div class="stat-cell"><div class="sc-label">Free-to-paid gap</div><div class="sc-val red">61%</div><div class="sc-sub">Users who don't convert</div></div>
+    <div class="stat-cell"><div class="sc-label">India competitor</div><div class="sc-val red">YT Music</div><div class="sc-sub">Same price, pre-installed</div></div>
+    <div class="stat-cell"><div class="sc-label">Conversion lever needed</div><div class="sc-val gold">FOMO</div><div class="sc-sub">Exclusivity drives upgrades</div></div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">01- Problem Statement</div>
+    <div class="g2">
+      <div class="card"><div class="card-label">Who is the user?</div><div class="card-h">The free-tier loyalist in India</div><div class="card-p">18–30 year old Indian Spotify user who has used the app for 2+ years but has never paid. They tolerate ads. They see Premium features like "no ads" and "offline listening" as <strong>nice-to-have, not must-have.</strong> YouTube Music is literally free and pre-installed- why would they pay?</div></div>
+      <div class="card"><div class="card-label">The core problem</div><div class="card-h">Spotify's Premium benefits don't create FOMO.</div><div class="card-p">Sound quality, offline mode, ad-free- these are <strong>functional upgrades</strong>. But Indian Gen Z doesn't upgrade for function. They upgrade for identity and exclusivity. Spotify needs a Premium benefit that makes free users feel like they're <em>missing out on something real</em>- not just missing out on convenience.</div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">02- The Idea</div>
+    <div class="big-idea" style="background:linear-gradient(135deg,#0d1f0d,#051005);color:#e8f5e8;">
+      <div class="bi-kicker">Product concept</div>
+      <div class="bi-h">"Artist Picks"- Celebrity Curated Playlists with Content Protection</div>
+      <div class="bi-p">A <strong style="color:var(--c-sp);">Premium-only playlist series</strong> where celebrities curate personal playlists- Ranbir Kapoor's midnight playlist, Virat Kohli's training mix, Dua Lipa's guilty pleasures. The UX is designed to prevent leaking: <strong style="color:var(--c-sp);">no screenshots of the tracklist, songs play in shuffle-only order, only the celebrity's face is shown on the queue screen.</strong> Free users can see the playlist exists and see who made it- but can't see or play any song. It's the locked room that makes Premium feel like a VIP pass, not just an ad-blocker.</div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">03- RICE Prioritisation</div>
+    <div class="rice-wrap">
+      <table class="rice-table">
+        <thead><tr><th>Feature</th><th>Reach</th><th>Impact</th><th>Confidence</th><th>Effort</th><th>RICE Score</th></tr></thead>
+        <tbody>
+          <tr class="rice-top"><td>🥇 Celebrity Picks (protected playlists)</td><td>9/10</td><td>9/10</td><td>80%</td><td>4/10</td><td><span class="rice-score">162</span></td></tr>
+          <tr class="rice-top"><td>🥈 "Locked preview" for free users</td><td>9/10</td><td>8/10</td><td>75%</td><td>3/10</td><td><span class="rice-score">180</span></td></tr>
+          <tr class="rice-top"><td>🥉 Weekly drop notifications (new celeb each week)</td><td>8/10</td><td>7/10</td><td>70%</td><td>2/10</td><td><span class="rice-score">196</span></td></tr>
+          <tr><td>Celebrity voice note intro to each playlist</td><td>7/10</td><td>8/10</td><td>60%</td><td>5/10</td><td><span class="rice-score">67</span></td></tr>
+          <tr><td>Social card: "I listen like [Celebrity]"</td><td>8/10</td><td>6/10</td><td>65%</td><td>2/10</td><td><span class="rice-score">156</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">04- Wireframe</div>
+    <div class="wf-container">
+      <div class="wf-label">Free user sees lock → Premium user sees full experience</div>
+      <div class="wf-phones">
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">FREE: Teaser View</div>
+            <div style="background:var(--bg4);border-radius:10px;height:55px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--muted);">[ Celebrity Photo ]</div>
+            <div class="wf-bar short"></div>
+            <div style="background:rgba(30,215,96,.08);border:1px solid rgba(30,215,96,.2);border-radius:8px;padding:8px;margin-top:6px;">
+              <div style="font-size:8px;color:#5de8a0;">🔒 PREMIUM ONLY</div>
+              <div class="wf-bar short" style="background:rgba(255,255,255,.1);"></div>
+              <div style="font-size:7px;color:var(--muted);margin-top:4px;">Songs hidden until upgrade</div>
+            </div>
+            <div class="wf-btn" style="margin-top:8px;">Unlock with Premium</div>
+          </div>
+          <div class="wf-caption">Free: locked teaser</div>
+        </div>
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">PREMIUM: Now Playing</div>
+            <div style="background:linear-gradient(135deg,#0a3a1a,#0d1f0d);border-radius:10px;height:80px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;font-size:20px;">🎵</div>
+            <div class="wf-bar short"></div>
+            <div style="font-size:7px;color:var(--muted);margin:4px 0;">Shuffle mode only · No tracklist view</div>
+            <div class="wf-row">
+              <div style="flex:1;"><div class="wf-bar"></div><div class="wf-bar xshort"></div></div>
+            </div>
+            <div class="wf-btn">♥ Save to Library</div>
+          </div>
+          <div class="wf-caption">Premium: playing (no song list)</div>
+        </div>
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">WEEKLY DROPS Feed</div>
+            <div class="wf-block">
+              <div style="font-size:8px;color:#5de8a0;">NEW THIS WEEK</div>
+              <div class="wf-row"><div class="wf-sq" style="background:var(--bg4);border-radius:50%;"></div><div class="wf-lines"><div class="wf-bar"></div><div class="wf-bar short"></div></div></div>
+            </div>
+            <div class="wf-block"><div class="wf-row"><div class="wf-sq" style="background:var(--bg4);border-radius:50%;opacity:.6;"></div><div class="wf-lines"><div class="wf-bar" style="opacity:.6;"></div><div class="wf-bar short" style="opacity:.6;"></div></div></div></div>
+            <div class="wf-btn">See All Drops →</div>
+          </div>
+          <div class="wf-caption">Weekly drop feed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">05- PRD: User Stories</div>
+    <div class="card">
+      <ul class="prd-stories">
+        <li class="prd-story"><span class="role">As a free user</span>, I want to see that a celebrity I follow has a playlist so I feel compelled to upgrade to hear it.</li>
+        <li class="prd-story"><span class="role">As a Premium user</span>, I want to discover new music through celebrities I trust so the playlist feels personal and curated- not algorithmic.</li>
+        <li class="prd-story"><span class="role">As a celebrity/talent team</span>, I want assurance that the tracklist cannot be screenshot or shared so I have control over what I'm publicly associated with.</li>
+        <li class="prd-story"><span class="role">As a Spotify content team member</span>, I want to schedule weekly celebrity drops with push notifications so there's a consistent engagement hook every Monday.</li>
+        <li class="prd-story"><span class="role">As the monetisation PM</span>, I want to measure free-to-premium conversion directly attributable to the Celebrity Picks feature via cohort analysis.</li>
+      </ul>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);">
+        <div class="card-label">Technical constraints</div>
+        <div class="card-p">Screenshot prevention requires OS-level DRM (available on iOS/Android). Shuffle-only queue needs a playlist mode flag in backend. Celebrity contracts require a legal/licensing framework. Requires a dedicated content ops team to onboard 1 celebrity per week.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">06- Success Metrics</div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-type acq">Acquisition</div><div class="kpi-name">Free→Premium conversion</div><div class="kpi-target">+8%</div><div class="kpi-desc">Lift in conversion rate among users who viewed a Celebrity Pick paywall</div></div>
+      <div class="kpi-card"><div class="kpi-type eng">Engagement</div><div class="kpi-name">Weekly active Celebrity Pick users</div><div class="kpi-target">15% MAU</div><div class="kpi-desc">Premium users who play at least 1 Celebrity Pick per week</div></div>
+      <div class="kpi-card"><div class="kpi-type ret">Retention</div><div class="kpi-name">Premium churn rate</div><div class="kpi-target">−2pp</div><div class="kpi-desc">Drop in monthly churn for cohort exposed to Celebrity Picks</div></div>
+      <div class="kpi-card"><div class="kpi-type rev">Revenue</div><div class="kpi-name">ARPU lift (India)</div><div class="kpi-target">+₹18</div><div class="kpi-desc">Average Revenue Per User increase per month in India market</div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">07- Roadmap</div>
+    <div class="roadmap">
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 1</div><div class="rm-time">Month 1–2</div></div><div class="rm-body"><div class="rm-item"><strong>DRM tech spike</strong>- screenshot blocking on iOS + Android</div><div class="rm-item"><strong>Legal framework</strong> for celebrity playlist contracts</div><div class="rm-item"><strong>Onboard 5 celebrities</strong> for India launch</div><div class="rm-metric">Gate: DRM working on 95%+ devices</div></div></div>
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 2</div><div class="rm-time">Month 3–4</div></div><div class="rm-body"><div class="rm-item"><strong>Build locked preview UI</strong> for free users</div><div class="rm-item"><strong>Weekly drops feed</strong> + push notification system</div><div class="rm-item"><strong>Closed beta</strong> with 10K Premium users</div><div class="rm-metric">Gate: Beta NPS &gt;72, 0 tracklist leaks</div></div></div>
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 3</div><div class="rm-time">Month 5–8</div></div><div class="rm-body"><div class="rm-item"><strong>India public launch</strong>- 1 new celebrity per week</div><div class="rm-item"><strong>Measure conversion lift</strong> vs control group</div><div class="rm-item"><strong>Expand to UK/US</strong> if India conversion +6%+</div><div class="rm-metric">Gate: +8% conversion, churn −2pp</div></div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">08- Risks & Iterations</div>
+    <div class="honest-grid">
+      <div class="honest-card" style="background:rgba(232,93,93,.05);"><div class="hc-type risk">Risk</div><p>Celebrities may not want the association risk of a public playlist. A controversial song choice could create a PR issue. Needs a content review layer before any playlist goes live.</p></div>
+      <div class="honest-card" style="background:rgba(93,232,160,.05);"><div class="hc-type bet">What I'd iterate on</div><p>If celebrity artists are hard to sign, start with sports stars and chefs- less restrictive contracts, equally passionate fan bases in India. Broaden the definition of "celebrity."</p></div>
+    </div>
+    <div class="learn-box"><div class="lb-title">📖 PM Insight</div><div class="lb-body">The lesson here is that <strong>Premium benefits need to create loss aversion, not just added convenience.</strong> "Ad-free" tells you what you gain. A locked celebrity playlist tells you what you're <em>missing.</em> Loss aversion is 2–3x more motivating than gain framing in conversion psychology. This feature is designed around that principle.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════ CASE: NIKE ══════════════════════════════ -->
+<div id="cs-nk" class="view">
+<div class="cs-wrap">
+  <button class="back-btn" onclick="showView('cases')">← All case studies</button>
+  <div class="cs-hero" style="background:linear-gradient(135deg,#1a0a00 0%,#4a1500 100%);color:#fff0e8;">
+    <div class="cs-hero-inner">
+      <div class="cs-hero-top">
+        <div class="ch-left">
+          <div class="ch-eyebrow">Case 03 · Fashion · Cultural Product Line</div>
+          <h1>Nike<br>Cities & Routes</h1>
+          <div class="ch-hook">"Nike's problem isn't the product. It's that they forgot every city has a story- and the people living in it want to wear it."</div>
+        </div>
+        <div class="ch-right">
+          <div class="ch-rlabel">If I was the PM</div>
+          <div class="ch-rval">Hyperlocal shoe line-<br>NY hustle, Kashmir<br>tradition, Mumbai chaos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-cell"><div class="sc-label">Nike revenue FY2025</div><div class="sc-val red">−10%</div><div class="sc-sub">$46.3B, down from $51.3B</div></div>
+    <div class="stat-cell"><div class="sc-label">Stock drop (June '24)</div><div class="sc-val red">−21%</div><div class="sc-sub">Worst single day ever</div></div>
+    <div class="stat-cell"><div class="sc-label">Digital sales</div><div class="sc-val red">−20%</div><div class="sc-sub">Nike Brand Digital FY2025</div></div>
+    <div class="stat-cell"><div class="sc-label">Root cause</div><div class="sc-val red">Identity</div><div class="sc-sub">No cultural resonance</div></div>
+    <div class="stat-cell"><div class="sc-label">Opportunity</div><div class="sc-val gold">Local pride</div><div class="sc-sub">Untapped globally</div></div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">01- Problem Statement</div>
+    <div class="g2">
+      <div class="card"><div class="card-label">Who is the user?</div><div class="card-h">The culturally-rooted urban sneakerhead</div><div class="card-p">25–38 year olds in cities like Mumbai, Jaipur, New York, and Istanbul who have strong pride in where they're from. They buy streetwear as identity. Adidas Samba feels like a shoe you could buy in a café in Milan. <strong>They want something that feels like their street.</strong></div></div>
+      <div class="card"><div class="card-label">The problem</div><div class="card-h">Nike makes global shoes. People want local ones.</div><div class="card-p">Nike's current collaborations are with athletes and celebrities- both globally generic. <strong>There is no Nike shoe that makes someone from Chandigarh feel seen.</strong> Adidas hasn't cracked this either. The lane is completely empty, and Nike has the manufacturing scale and design talent to own it.</div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">02- The Idea</div>
+    <div class="big-idea" style="background:linear-gradient(135deg,#1a0a00,#0d0500);color:#fff0e8;">
+      <div class="bi-kicker">Product concept</div>
+      <div class="bi-h">Cities & Routes- A Shoe With a Story Built In</div>
+      <div class="bi-p">A limited product line where each shoe is designed around a specific city or route. <strong style="color:#ff8c5a;">"New York Midnight"</strong>- dark, metallic, subway-grate texture on the sole, a skyline silhouette stitched into the heel. <strong style="color:#ff8c5a;">"Kashmir Route"</strong>- hand-embroidery-inspired prints in papier-mâché colours, Chinar leaf motif on the tongue. <strong style="color:#ff8c5a;">"Mumbai Local"</strong>- chaos and colour, train-ticket aesthetic, rain-resistant sole. Each shoe ships with a small printed "route card" that tells the story of the city- and a QR code to an AR experience where you walk the actual route on your phone. <strong style="color:#ff8c5a;">Limited quantities per city. People from that city get early access.</strong></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">03- RICE Prioritisation</div>
+    <div class="rice-wrap">
+      <table class="rice-table">
+        <thead><tr><th>Feature</th><th>Reach</th><th>Impact</th><th>Confidence</th><th>Effort</th><th>RICE Score</th></tr></thead>
+        <tbody>
+          <tr class="rice-top"><td>🥇 City-designed shoe line (3 cities MVP)</td><td>7/10</td><td>10/10</td><td>75%</td><td>6/10</td><td><span class="rice-score">87</span></td></tr>
+          <tr class="rice-top"><td>🥈 City-native early access drops</td><td>6/10</td><td>9/10</td><td>80%</td><td>3/10</td><td><span class="rice-score">144</span></td></tr>
+          <tr class="rice-top"><td>🥉 Route card + AR experience in box</td><td>7/10</td><td>8/10</td><td>65%</td><td>4/10</td><td><span class="rice-score">91</span></td></tr>
+          <tr><td>Community voting on next city</td><td>9/10</td><td>7/10</td><td>70%</td><td>2/10</td><td><span class="rice-score">220</span></td></tr>
+          <tr><td>Local designer collaboration per city</td><td>5/10</td><td>9/10</td><td>60%</td><td>7/10</td><td><span class="rice-score">39</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">04- Wireframe (App drop experience)</div>
+    <div class="wf-container">
+      <div class="wf-label">Nike App: City drop → Early access → Route AR</div>
+      <div class="wf-phones">
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">DROP ALERT</div>
+            <div style="background:linear-gradient(135deg,#1a0a00,#4a1500);border-radius:10px;padding:10px;margin-bottom:8px;">
+              <div style="font-size:8px;color:#ff8c5a;font-weight:600;">🔥 MUMBAI LOCAL DROP</div>
+              <div class="wf-bar" style="background:rgba(255,140,90,.3);width:80%;"></div>
+              <div style="font-size:7px;color:rgba(255,240,232,.6);margin-top:4px;">48 hrs · City access only</div>
+            </div>
+            <div class="wf-bar"></div><div class="wf-bar short"></div>
+            <div class="wf-btn" style="color:#ff8c5a;border-color:rgba(255,140,90,.4);">Set Drop Reminder</div>
+          </div>
+          <div class="wf-caption">Drop countdown alert</div>
+        </div>
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">SHOE PAGE</div>
+            <div style="background:var(--bg4);border-radius:10px;height:65px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;font-size:24px;">👟</div>
+            <div class="wf-bar short"></div>
+            <div style="font-size:7px;color:var(--muted);margin:3px 0;">The Mumbai Local · Limited 2,000 pairs</div>
+            <div style="display:flex;gap:4px;margin:4px 0;flex-wrap:wrap;">
+              <span class="wf-chip">Monsoon grip sole</span><span class="wf-chip">Train-ticket print</span>
+            </div>
+            <div class="wf-btn">Buy- ₹12,999</div>
+          </div>
+          <div class="wf-caption">Product page</div>
+        </div>
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">ROUTE CARD (in box)</div>
+            <div style="background:var(--bg4);border-radius:8px;padding:8px;margin-bottom:6px;text-align:center;">
+              <div style="font-size:8px;color:#ff8c5a;font-weight:600;">ROUTE: DADAR → CHURCHGATE</div>
+              <div class="wf-bar" style="width:60%;margin:4px auto;background:rgba(255,140,90,.2);"></div>
+              <div style="font-size:7px;color:var(--muted);">Scan to walk this route in AR</div>
+            </div>
+            <div style="background:rgba(255,140,90,.08);border:1px solid rgba(255,140,90,.2);border-radius:8px;padding:8px;text-align:center;">
+              <div style="font-size:16px;">📱</div>
+              <div style="font-size:7px;color:var(--muted);">Point camera at route card</div>
+            </div>
+          </div>
+          <div class="wf-caption">AR route experience</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">05- PRD: User Stories</div>
+    <div class="card">
+      <ul class="prd-stories">
+        <li class="prd-story"><span class="role">As a Mumbai resident</span>, I want early access to the Mumbai Local drop before people in other cities so the shoe feels like it was made for me specifically.</li>
+        <li class="prd-story"><span class="role">As a sneaker collector</span>, I want each city shoe to have a documented story and limited quantities so it has genuine collectible value- not just marketing hype.</li>
+        <li class="prd-story"><span class="role">As a Nike community member</span>, I want to vote on which city gets the next shoe so I feel involved in the product roadmap.</li>
+        <li class="prd-story"><span class="role">As a Nike design lead</span>, I want clear cultural brief inputs from local researchers per city so the design is authentic and not a superficial print-on-shoe treatment.</li>
+        <li class="prd-story"><span class="role">As a Nike marketing team member</span>, I want UGC from city residents naturally sharing their shoe in their city context so organic content replaces expensive paid campaigns.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">06- Success Metrics</div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-type acq">Acquisition</div><div class="kpi-name">Sellout speed</div><div class="kpi-target">&lt;72 hrs</div><div class="kpi-desc">Each city drop must sell out within 72 hours to validate demand signal</div></div>
+      <div class="kpi-card"><div class="kpi-type eng">Engagement</div><div class="kpi-name">UGC in-city posts</div><div class="kpi-target">30K+</div><div class="kpi-desc">Organic posts with city shoe in real city context (not studio) per drop</div></div>
+      <div class="kpi-card"><div class="kpi-type ret">Retention</div><div class="kpi-name">Repeat buyer rate</div><div class="kpi-target">25%</div><div class="kpi-desc">% of city drop buyers who purchase the next city drop</div></div>
+      <div class="kpi-card"><div class="kpi-type rev">Revenue</div><div class="kpi-name">Revenue per unit vs standard</div><div class="kpi-target">+40%</div><div class="kpi-desc">Premium pricing vs comparable standard Nike silhouette</div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">07- Roadmap</div>
+    <div class="roadmap">
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 1</div><div class="rm-time">Month 1–4</div></div><div class="rm-body"><div class="rm-item"><strong>Cultural research</strong> in 3 MVP cities (NY, Mumbai, Jaipur)</div><div class="rm-item"><strong>Design brief</strong> + prototype 2 colourways per city</div><div class="rm-item"><strong>Supply chain</strong> set for limited 2,000 units/city</div><div class="rm-metric">Gate: Design approved by local focus groups</div></div></div>
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 2</div><div class="rm-time">Month 5–8</div></div><div class="rm-body"><div class="rm-item"><strong>App drop feature</strong>- early access by location</div><div class="rm-item"><strong>Route card + AR</strong> experience built</div><div class="rm-item"><strong>City 1 launch</strong> (Mumbai) with seeded influencers</div><div class="rm-metric">Gate: Sellout in &lt;72hrs, UGC 10K+ posts</div></div></div>
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 3</div><div class="rm-time">Month 9–14</div></div><div class="rm-body"><div class="rm-item"><strong>Cities 2 + 3 launch</strong> (NY, Jaipur)</div><div class="rm-item"><strong>Community vote</strong> opens for city #4</div><div class="rm-item"><strong>Global brief</strong> to expand to London, Seoul, Istanbul</div><div class="rm-metric">Gate: Repeat buyer rate &gt;22%</div></div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">08- Risks & Iterations</div>
+    <div class="honest-grid">
+      <div class="honest-card" style="background:rgba(232,93,93,.05);"><div class="hc-type risk">Risk</div><p>Cultural inauthenticity is the biggest danger. If the Kashmir shoe looks like a tourist souvenir rather than a genuine cultural product, the backlash will be severe- and fast on social media.</p></div>
+      <div class="honest-card" style="background:rgba(93,232,160,.05);"><div class="hc-type bet">What I'd iterate on</div><p>Mandatory: a local cultural advisor on the design team per city, paid fairly and credited publicly. If community voting shows 3 cities want the same cultural element, prioritise those first.</p></div>
+    </div>
+    <div class="learn-box"><div class="lb-title">📖 PM Insight</div><div class="lb-body">Nike's decline isn't about making a bad shoe. It's about making <strong>shoes for everyone</strong>- which means they feel made for no one. This product line is built on the principle that <em>specificity creates belonging.</em> The more targeted the story, the more someone who lives that story wants to buy it. That's counterintuitive for a brand used to thinking at global scale- but it's the right product move.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════ CASE: OREO ══════════════════════════════ -->
+<div id="cs-or" class="view">
+<div class="cs-wrap">
+  <button class="back-btn" onclick="showView('cases')">← All case studies</button>
+  <div class="cs-hero" style="background:linear-gradient(135deg,#0a0a12 0%,#1a1a2e 100%);color:#f0f0f8;">
+    <div class="cs-hero-inner">
+      <div class="cs-hero-top">
+        <div class="ch-left">
+          <div class="ch-eyebrow">Case 04 · FMCG · Product Innovation</div>
+          <h1>Oreo Build<br>Your Own</h1>
+          <div class="ch-hook">"Oreo sells one product in a hundred flavours. What if they sold the experience of creating the flavour yourself?"</div>
+        </div>
+        <div class="ch-right">
+          <div class="ch-rlabel">If I was the PM</div>
+          <div class="ch-rval">Plain biscuits + cream<br>jar + spatula-<br>choose your cream</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-cell"><div class="sc-label">Oreo global revenue</div><div class="sc-val green">$3B+</div><div class="sc-sub">Mondelez's #1 biscuit brand</div></div>
+    <div class="stat-cell"><div class="sc-label">Active flavour variants</div><div class="sc-val">30+</div><div class="sc-sub">Limited edition every quarter</div></div>
+    <div class="stat-cell"><div class="sc-label">Average eating ritual</div><div class="sc-val gold">Twist</div><div class="sc-sub">Brand built on personalisation</div></div>
+    <div class="stat-cell"><div class="sc-label">D2C gifting gap</div><div class="sc-val red">0</div><div class="sc-sub">No premium gifting product exists</div></div>
+    <div class="stat-cell"><div class="sc-label">Opportunity</div><div class="sc-val gold">₹299–499</div><div class="sc-sub">Premium kit price point</div></div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">01- Problem Statement</div>
+    <div class="g2">
+      <div class="card"><div class="card-label">Who is the user?</div><div class="card-h">The Oreo ritual lover + the gift-giver</div><div class="card-p">Two users: (1) the 16–28 year old who has a strong personal Oreo ritual- always twists, licks the cream first, has a preferred cream thickness. <strong>Oreo's own brand identity is built on personalisation rituals</strong>- but the product doesn't let you personalise the most important thing: how much cream. (2) The 22–35 year old looking for a fun, memorable gift that isn't boring.</div></div>
+      <div class="card"><div class="card-label">The core insight</div><div class="card-h">Oreo's brand IS the ritual. Why not sell the ritual itself?</div><div class="card-p">Oreo has run years of "how do you eat your Oreo?" campaigns. The brand already knows people care deeply about the cream. <strong>But the product gives you no control over the cream.</strong> You get what you get. The Build Your Own Kit closes the gap between the brand's promise (your Oreo, your way) and the product's reality (one standard cream amount).</div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">02- The Idea</div>
+    <div class="big-idea" style="background:linear-gradient(135deg,#0a0a12,#05050c);color:#f0f0f8;">
+      <div class="bi-kicker">Product concept</div>
+      <div class="bi-h">The Oreo Kit- Plain Biscuits, Your Cream, Your Rules</div>
+      <div class="bi-p">A boxed kit containing: <strong style="color:var(--accent);">plain Oreo wafers (no cream)</strong> + a <strong style="color:var(--accent);">small glass jar of cream</strong> in your chosen flavour (classic, double, chocolate, strawberry, mint) + a <strong style="color:var(--accent);">mini spatula</strong> for application. You choose how thick. You choose the flavour. The jar doubles as a collectible after the cream runs out- small enough to keep on a desk or vanity. Sold online and as an in-store gifting SKU at ₹349. The spatula has "BUILD YOUR OWN" embossed on it. <strong style="color:var(--accent);">The first FMCG biscuit brand to let you design your own bite.</strong></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">03- RICE Prioritisation</div>
+    <div class="rice-wrap">
+      <table class="rice-table">
+        <thead><tr><th>Feature</th><th>Reach</th><th>Impact</th><th>Confidence</th><th>Effort</th><th>RICE Score</th></tr></thead>
+        <tbody>
+          <tr class="rice-top"><td>🥇 Build Your Own Kit (wafer + jar + spatula)</td><td>7/10</td><td>10/10</td><td>80%</td><td>5/10</td><td><span class="rice-score">112</span></td></tr>
+          <tr class="rice-top"><td>🥈 5 cream flavour options at launch</td><td>8/10</td><td>8/10</td><td>85%</td><td>4/10</td><td><span class="rice-score">136</span></td></tr>
+          <tr class="rice-top"><td>🥉 Collectible glass jar (seasonal designs)</td><td>6/10</td><td>7/10</td><td>70%</td><td>3/10</td><td><span class="rice-score">98</span></td></tr>
+          <tr><td>Personalised name label on jar (gifting)</td><td>5/10</td><td>8/10</td><td>65%</td><td>4/10</td><td><span class="rice-score">65</span></td></tr>
+          <tr><td>D2C website- mix your own box</td><td>4/10</td><td>9/10</td><td>60%</td><td>7/10</td><td><span class="rice-score">31</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">04- Wireframe (Product packaging + D2C page)</div>
+    <div class="wf-container">
+      <div class="wf-label">D2C product page: choose cream → preview kit → checkout</div>
+      <div class="wf-phones">
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">PRODUCT PAGE</div>
+            <div style="background:var(--bg4);border-radius:10px;height:60px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;font-size:20px;">🍪</div>
+            <div class="wf-bar short"></div>
+            <div style="font-size:7px;color:var(--muted);margin:3px 0;">Oreo Build Kit · ₹349</div>
+            <div style="font-size:8px;color:var(--text);margin-top:4px;">Choose your cream:</div>
+            <div style="display:flex;gap:4px;margin:4px 0;flex-wrap:wrap;">
+              <span class="wf-chip" style="background:rgba(255,255,255,.12);color:var(--text);">Classic</span>
+              <span class="wf-chip">Choco</span><span class="wf-chip">Strawberry</span>
+            </div>
+          </div>
+          <div class="wf-caption">Pick your cream</div>
+        </div>
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">KIT PREVIEW</div>
+            <div style="display:flex;gap:6px;margin-bottom:8px;">
+              <div style="flex:1;background:var(--bg4);border-radius:8px;padding:6px;text-align:center;font-size:9px;color:var(--muted);">Wafers<br>🍪</div>
+              <div style="flex:1;background:var(--bg4);border-radius:8px;padding:6px;text-align:center;font-size:9px;color:var(--muted);">Cream Jar<br>🫙</div>
+              <div style="flex:1;background:var(--bg4);border-radius:8px;padding:6px;text-align:center;font-size:9px;color:var(--muted);">Spatula<br>🥄</div>
+            </div>
+            <div class="wf-bar short"></div>
+            <div style="font-size:7px;color:var(--muted);margin:3px 0;">Classic Cream selected</div>
+            <div class="wf-btn">Add to Cart ₹349</div>
+          </div>
+          <div class="wf-caption">Kit preview + cart</div>
+        </div>
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">GIFT OPTION</div>
+            <div class="wf-block">
+              <div style="font-size:8px;color:var(--accent);">🎁 Gift this kit?</div>
+              <div class="wf-bar short"></div>
+              <div style="font-size:7px;color:var(--muted);">Add name to jar label</div>
+            </div>
+            <div class="wf-bar short"></div>
+            <div style="font-size:7px;color:var(--muted);margin:4px 0;">Add a message card</div>
+            <div class="wf-bar xshort"></div>
+            <div class="wf-btn">Proceed to Gift Checkout</div>
+          </div>
+          <div class="wf-caption">Gifting mode</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">05- PRD: User Stories</div>
+    <div class="card">
+      <ul class="prd-stories">
+        <li class="prd-story"><span class="role">As an Oreo fan</span>, I want to choose my cream flavour and apply it myself so the experience matches how I already eat Oreos- but better.</li>
+        <li class="prd-story"><span class="role">As a gift buyer</span>, I want to personalise the jar with my friend's name so this feels like a thoughtful gift and not just a grocery item in fancy packaging.</li>
+        <li class="prd-story"><span class="role">As a creator/food influencer</span>, I want to photograph and video the kit unboxing and the "build" process so I have engaging content that also promotes Oreo.</li>
+        <li class="prd-story"><span class="role">As a Mondelez product manager</span>, I want the jar to be reusable and collectible so customers feel compelled to buy seasonal variants rather than treating it as a one-time purchase.</li>
+        <li class="prd-story"><span class="role">As a supply chain manager</span>, I want the cream jar to use existing cream formulations so R&D cost is minimal for the MVP launch.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">06- Success Metrics</div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-type acq">Acquisition</div><div class="kpi-name">D2C unit sales (Month 1)</div><div class="kpi-target">25,000</div><div class="kpi-desc">Units sold in first 30 days via D2C and quick commerce</div></div>
+      <div class="kpi-card"><div class="kpi-type eng">Engagement</div><div class="kpi-name">UGC "build" videos</div><div class="kpi-target">10K+</div><div class="kpi-desc">Short-form videos of the build process posted by customers</div></div>
+      <div class="kpi-card"><div class="kpi-type ret">Retention</div><div class="kpi-name">Cream refill purchases</div><div class="kpi-target">35%</div><div class="kpi-desc">% of kit buyers who repurchase a cream jar (standalone) within 60 days</div></div>
+      <div class="kpi-card"><div class="kpi-type rev">Revenue</div><div class="kpi-name">Revenue per customer</div><div class="kpi-target">3× standard</div><div class="kpi-desc">Kit buyer LTV vs standard Oreo buyer in same 90-day window</div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">07- Roadmap</div>
+    <div class="roadmap">
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 1</div><div class="rm-time">Month 1–3</div></div><div class="rm-body"><div class="rm-item"><strong>Cream formulation test</strong> for jar format (shelf stability)</div><div class="rm-item"><strong>Packaging design</strong>- jar, spatula, outer box</div><div class="rm-item"><strong>Blinkit + D2C pilot</strong>- 10,000 units in 2 cities</div><div class="rm-metric">Gate: NPS &gt;80, refill intent &gt;40%</div></div></div>
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 2</div><div class="rm-time">Month 4–6</div></div><div class="rm-body"><div class="rm-item"><strong>5 cream SKUs</strong> launched (classic, choco, strawberry, mint, peanut butter)</div><div class="rm-item"><strong>Creator seeding</strong>- 100 food influencers, no script</div><div class="rm-item"><strong>Gifting mode</strong> live on D2C site</div><div class="rm-metric">Gate: UGC 10K posts, sell-through &gt;80%</div></div></div>
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 3</div><div class="rm-time">Month 7–12</div></div><div class="rm-body"><div class="rm-item"><strong>Retail launch</strong>- Big Bazaar, DMart, airport retail</div><div class="rm-item"><strong>Season 2 jar design</strong> drops (collectible)</div><div class="rm-item"><strong>Cream refill standalone</strong> SKU in store</div><div class="rm-metric">Gate: Refill rate &gt;30%, retail reorder rate &gt;70%</div></div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">08- Risks & Iterations</div>
+    <div class="honest-grid">
+      <div class="honest-card" style="background:rgba(232,93,93,.05);"><div class="hc-type risk">Risk</div><p>Cream shelf stability in a jar format is a real food science challenge- different from the sealed wafer sandwich. Might need a preservative reformulation. This adds R&D timeline and cost.</p></div>
+      <div class="honest-card" style="background:rgba(93,232,160,.05);"><div class="hc-type bet">What I'd iterate on</div><p>If the glass jar is too expensive at launch, start with a squeezable cream tube instead- lower manufacturing cost, still gives the customisation experience. Upgrade to jar in Season 2.</p></div>
+    </div>
+    <div class="learn-box"><div class="lb-title">📖 PM Insight</div><div class="lb-body">This is a product expansion, not a marketing stunt. The Kit is a <strong>new SKU in a new category (gifting/experience) at 5× the price point</strong> of a standard Oreo packet. It requires packaging engineering, food science, supply chain, D2C infrastructure, and a creator marketing motion. The PM here isn't making an ad campaign- they're launching a new business unit inside an FMCG brand.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════ CASE: MMT ══════════════════════════════ -->
+<div id="cs-mm" class="view">
+<div class="cs-wrap">
+  <button class="back-btn" onclick="showView('cases')">← All case studies</button>
+  <div class="cs-hero" style="background:linear-gradient(135deg,#1a0505 0%,#3a1010 100%);color:#fff0f0;">
+    <div class="cs-hero-inner">
+      <div class="cs-hero-top">
+        <div class="ch-left">
+          <div class="ch-eyebrow">Case 05 · Travel Tech · AI Feature</div>
+          <h1>MakeMyTrip<br>TripSquad</h1>
+          <div class="ch-hook">"Every group trip starts with excitement and ends in a WhatsApp fight. TripSquad ends the fight before it starts."</div>
+        </div>
+        <div class="ch-right">
+          <div class="ch-rlabel">If I was the PM</div>
+          <div class="ch-rval">AI-powered group<br>itinerary builder-<br>everyone inputs, AI decides</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-cell"><div class="sc-label">MMT gross bookings</div><div class="sc-val green">+27%</div><div class="sc-sub">$2.6B Q3 FY2025</div></div>
+    <div class="stat-cell"><div class="sc-label">Group travel share</div><div class="sc-val gold">47%</div><div class="sc-sub">Of Indian trips are in groups</div></div>
+    <div class="stat-cell"><div class="sc-label">Group booking friction</div><div class="sc-val red">High</div><div class="sc-sub">No collaborative feature exists</div></div>
+    <div class="stat-cell"><div class="sc-label">MMT AI push</div><div class="sc-val green">Myra</div><div class="sc-sub">GenAI assistant launched Aug 2025</div></div>
+    <div class="stat-cell"><div class="sc-label">Opportunity</div><div class="sc-val gold">D2B Feature</div><div class="sc-sub">First-mover in group collab</div></div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">01- Problem Statement</div>
+    <div class="g2">
+      <div class="card"><div class="card-label">Who is the user?</div><div class="card-h">The group trip organiser</div><div class="card-p">The 24–35 year old who always ends up "managing" the group trip- collating preferences over WhatsApp, fighting over who wants flights vs train, manually checking MMT for 6 different people's dates, sharing screenshots back and forth. <strong>They do all the work and still get blamed when something's wrong.</strong></div></div>
+      <div class="card"><div class="card-label">The pain point</div><div class="card-h">Group travel planning is a coordination nightmare.</div><div class="card-p">47% of Indian trips are group trips. But MMT has no collaborative feature. Everyone has to share screenshots, argue in chats, and trust one person to book. The result: <strong>decision fatigue, conflict, and booking abandonment.</strong> Groups often take 3–5 WhatsApp conversations and multiple app sessions to confirm a trip- or give up entirely.</div></div>
+      <div class="card gcol"><div class="card-label">User research signal</div><div class="card-p">Twitter/X search "makemytrip group trip", Reddit r/india travel threads, and Google Play reviews: top complaints include "no way to plan together," "had to share screenshots with 6 people," and "ended up booking separately because it was too hard to agree." This is a known, unresolved pain point with zero current solution in the Indian OTA market.</div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">02- The Idea</div>
+    <div class="big-idea" style="background:linear-gradient(135deg,#1a0505,#0d0202);color:#fff0f0;">
+      <div class="bi-kicker">Product concept</div>
+      <div class="bi-h">TripSquad- Group Itinerary Planning Where AI Resolves the Fight</div>
+      <div class="bi-p">A collaborative trip planning mode inside the MMT app. One person creates a "Squad" and invites friends via link. Each member independently inputs: <strong style="color:#ff8c8c;">dates they're free, budget range, transport preference (flight/train/road), top 3 must-visit places.</strong> Once all members have responded, <strong style="color:#ff8c8c;">MMT's AI generates 3 itinerary options</strong> ranked by how well they satisfy the group's collective preferences- with a "compatibility score" per option. Group votes with one tap. No arguments needed. The AI shows each person why their preference was or wasn't included, with a clear trade-off explanation. The organiser books in one click. <strong style="color:#ff8c8c;">The entire group can see the live itinerary, split costs, and get individual reminders.</strong></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">03- RICE Prioritisation</div>
+    <div class="rice-wrap">
+      <table class="rice-table">
+        <thead><tr><th>Feature</th><th>Reach</th><th>Impact</th><th>Confidence</th><th>Effort</th><th>RICE Score</th></tr></thead>
+        <tbody>
+          <tr class="rice-top"><td>🥇 Group preferences input + AI itinerary</td><td>8/10</td><td>10/10</td><td>75%</td><td>7/10</td><td><span class="rice-score">86</span></td></tr>
+          <tr class="rice-top"><td>🥈 One-tap group vote on itinerary options</td><td>8/10</td><td>9/10</td><td>80%</td><td>3/10</td><td><span class="rice-score">192</span></td></tr>
+          <tr class="rice-top"><td>🥉 Live shared itinerary view for all members</td><td>9/10</td><td>8/10</td><td>85%</td><td>4/10</td><td><span class="rice-score">153</span></td></tr>
+          <tr><td>In-app cost splitting</td><td>7/10</td><td>8/10</td><td>65%</td><td>5/10</td><td><span class="rice-score">73</span></td></tr>
+          <tr><td>WhatsApp share link for non-MMT users</td><td>9/10</td><td>7/10</td><td>80%</td><td>2/10</td><td><span class="rice-score">252</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">04- Wireframe</div>
+    <div class="wf-container">
+      <div class="wf-label">Create Squad → Members input preferences → AI generates itineraries → Group votes</div>
+      <div class="wf-phones">
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">CREATE SQUAD</div>
+            <div class="wf-block">
+              <div style="font-size:8px;color:var(--c-mm);">✈ NEW TRIP SQUAD</div>
+              <div class="wf-bar short"></div>
+              <div style="font-size:7px;color:var(--muted);">Trip name · Invite friends</div>
+            </div>
+            <div style="display:flex;gap:-6px;margin:6px 0;">
+              <div style="width:22px;height:22px;border-radius:50%;background:#e74c3c;border:2px solid var(--bg4);font-size:9px;display:flex;align-items:center;justify-content:center;">A</div>
+              <div style="width:22px;height:22px;border-radius:50%;background:#3498db;border:2px solid var(--bg4);font-size:9px;display:flex;align-items:center;justify-content:center;margin-left:-4px;">B</div>
+              <div style="width:22px;height:22px;border-radius:50%;background:#2ecc71;border:2px solid var(--bg4);font-size:9px;display:flex;align-items:center;justify-content:center;margin-left:-4px;">C</div>
+              <div style="width:22px;height:22px;border-radius:50%;background:var(--bg4);border:2px solid var(--border2);font-size:9px;display:flex;align-items:center;justify-content:center;margin-left:-4px;color:var(--muted);">+</div>
+            </div>
+            <div class="wf-btn" style="color:#e74c3c;border-color:rgba(231,76,60,.4);">Share Invite Link</div>
+          </div>
+          <div class="wf-caption">Create + invite squad</div>
+        </div>
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">MY PREFERENCES</div>
+            <div class="wf-block">
+              <div style="font-size:7px;color:var(--muted);">Dates free</div>
+              <div style="display:flex;gap:3px;margin-top:3px;">
+                <span class="wf-chip" style="background:rgba(231,76,60,.15);color:#e74c3c;">Dec 20</span>
+                <span class="wf-chip" style="background:rgba(231,76,60,.15);color:#e74c3c;">Dec 24</span>
+              </div>
+            </div>
+            <div class="wf-block">
+              <div style="font-size:7px;color:var(--muted);">Transport</div>
+              <div style="display:flex;gap:3px;margin-top:3px;">
+                <span class="wf-chip" style="background:rgba(231,76,60,.15);color:#e74c3c;">✈ Flight</span>
+                <span class="wf-chip">🚂 Train</span>
+              </div>
+            </div>
+            <div class="wf-block"><div style="font-size:7px;color:var(--muted);">Must visit: Manali, Shimla</div></div>
+            <div class="wf-btn" style="color:#e74c3c;border-color:rgba(231,76,60,.4);">Submit Preferences</div>
+          </div>
+          <div class="wf-caption">Each member inputs</div>
+        </div>
+        <div>
+          <div class="wf-phone">
+            <div class="wf-screen-title">AI ITINERARIES</div>
+            <div class="wf-block" style="border-left:2px solid #e74c3c;">
+              <div style="font-size:8px;color:#e74c3c;">Option A · 96% match</div>
+              <div class="wf-bar short"></div>
+              <div style="font-size:7px;color:var(--muted);">Shimla Dec 21–24 · Flight · 4 agreed</div>
+            </div>
+            <div class="wf-block">
+              <div style="font-size:8px;color:var(--muted);">Option B · 82% match</div>
+              <div class="wf-bar short" style="opacity:.5;"></div>
+              <div style="font-size:7px;color:var(--muted2);">Manali Dec 22–26 · Train</div>
+            </div>
+            <div style="display:flex;gap:4px;margin-top:6px;">
+              <div class="wf-btn" style="flex:1;color:#e74c3c;border-color:rgba(231,76,60,.4);">Vote A 👍</div>
+              <div class="wf-btn" style="flex:1;">Vote B</div>
+            </div>
+          </div>
+          <div class="wf-caption">AI options + group vote</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">05- PRD: User Stories</div>
+    <div class="card">
+      <ul class="prd-stories">
+        <li class="prd-story"><span class="role">As a trip organiser</span>, I want to collect all my friends' preferences in one place so I don't have to manage 15 WhatsApp messages and a separate Google Sheet.</li>
+        <li class="prd-story"><span class="role">As a group member</span>, I want to see why my preferred option was or wasn't chosen so I don't feel ignored- I feel heard even when I'm outvoted.</li>
+        <li class="prd-story"><span class="role">As any group member</span>, I want to share the Squad invite link via WhatsApp to friends who don't have MMT installed so nobody is excluded from planning.</li>
+        <li class="prd-story"><span class="role">As the MMT product team</span>, I want each Squad booking to count as a single high-value transaction so we track group bookings as a separate revenue segment.</li>
+        <li class="prd-story"><span class="role">As a non-technical group member</span>, I want the preference form to take under 2 minutes to complete on mobile so there's no drop-off in participation.</li>
+      </ul>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);">
+        <div class="card-label">Technical constraints</div>
+        <div class="card-p">AI itinerary generation must run in under 10 seconds (UX threshold). Conflict resolution algorithm needs weighted preference scoring (budget constraints weighted highest). WhatsApp deep-link requires MMT app install fallback to web view. Real-time preference updates need WebSocket connection or polling at &lt;30s intervals.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">06- Success Metrics</div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-type acq">Acquisition</div><div class="kpi-name">New user installs via Squad link</div><div class="kpi-target">18%</div><div class="kpi-desc">% of Squad invitees who install MMT and complete their first booking</div></div>
+      <div class="kpi-card"><div class="kpi-type eng">Engagement</div><div class="kpi-name">Squad completion rate</div><div class="kpi-target">55%</div><div class="kpi-desc">% of created Squads that reach the booking stage (vs abandonment)</div></div>
+      <div class="kpi-card"><div class="kpi-type ret">Retention</div><div class="kpi-name">Repeat Squad bookings</div><div class="kpi-target">40%</div><div class="kpi-desc">% of Squad users who create a second Squad within 6 months</div></div>
+      <div class="kpi-card"><div class="kpi-type rev">Revenue</div><div class="kpi-name">Avg group booking value</div><div class="kpi-target">4.2×</div><div class="kpi-desc">Group booking average transaction value vs solo booking baseline</div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">07- Roadmap</div>
+    <div class="roadmap">
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 1</div><div class="rm-time">Month 1–3</div></div><div class="rm-body"><div class="rm-item"><strong>Preference form MVP</strong>- dates, budget, transport, places</div><div class="rm-item"><strong>Basic AI matching</strong> using Myra (existing MMT AI)</div><div class="rm-item"><strong>Closed beta</strong>- 500 Squads, measure completion rate</div><div class="rm-metric">Gate: Completion rate &gt;45%, AI suggestions rated useful by &gt;70%</div></div></div>
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 2</div><div class="rm-time">Month 4–7</div></div><div class="rm-body"><div class="rm-item"><strong>Group vote feature</strong> + live shared itinerary view</div><div class="rm-item"><strong>WhatsApp invite link</strong> with web fallback</div><div class="rm-item"><strong>Public launch</strong>- promoted on MMT app home</div><div class="rm-metric">Gate: 10,000 Squads created in first 30 days</div></div></div>
+      <div class="rm-col"><div class="rm-head"><div class="rm-phase">Phase 3</div><div class="rm-time">Month 8–14</div></div><div class="rm-body"><div class="rm-item"><strong>Cost splitting feature</strong> inside Squad</div><div class="rm-item"><strong>Group chat</strong> inside the Squad itinerary</div><div class="rm-item"><strong>Corporate travel</strong> pilot- TripSquad for work teams</div><div class="rm-metric">Gate: Group booking value 4×+ solo, repeat Squad rate &gt;35%</div></div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="sb-label">08- Risks & Iterations</div>
+    <div class="honest-grid">
+      <div class="honest-card" style="background:rgba(232,93,93,.05);"><div class="hc-type risk">Risk</div><p>AI itinerary quality depends on data quality. If member preferences are vague ("anywhere nice, budget okay"), the AI options will be generic and the feature will feel useless. Needs smart form design with smart defaults.</p></div>
+      <div class="honest-card" style="background:rgba(93,232,160,.05);"><div class="hc-type bet">What I'd iterate on</div><p>After beta, if completion rate is below 45%, I'd add "quick mode"- just share dates and budget, AI handles the rest. Reduce cognitive load for the group members who won't fill a full form.</p></div>
+    </div>
+    <div class="learn-box"><div class="lb-title">📖 PM Insight</div><div class="lb-body">The surface-level pitch is "collaborative travel planning." But the real PM insight is that <strong>this is a group conversion feature, not a UX feature.</strong> Each Squad that completes a booking represents 3–8 people booking simultaneously- that's 4× the average transaction value in one click. MMT's AI infrastructure (Myra) already exists. TripSquad is about applying it to a problem that unlocks a disproportionately large revenue opportunity. That's the kind of thinking that separates a feature spec from a product strategy.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════ ABOUT ══════════════════════════════ -->
+<div id="view-about" class="view">
+<div class="about-wrap">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2);margin-bottom:1rem;">About this portfolio</div>
+  <h1 class="about-h">I think in<br>systems, not slogans.</h1>
+  <p class="about-intro">Every case study here follows the same PM process- starting with a real user problem backed by real data, working through a structured prioritisation framework, and ending with concrete success metrics. This isn't creative writing. It's how I'd actually approach a product brief.</p>
+
+  <div class="about-framework">
+    <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:1rem;letter-spacing:.04em;">How I approach every brief</div>
+    <div class="af-step"><div class="af-num">1</div><div class="af-text"><h4>Find the real problem</h4><p>Not the symptom. The underlying user or business problem that nobody's named clearly yet.</p></div></div>
+    <div class="af-step"><div class="af-num">2</div><div class="af-text"><h4>Generate 10 solutions, ruthlessly prioritise to 3</h4><p>Using RICE or a similar framework. The goal is to build what creates the most impact with the least cost.</p></div></div>
+    <div class="af-step"><div class="af-num">3</div><div class="af-text"><h4>Spec it clearly enough for an engineer to build it</h4><p>PRD with user stories, technical constraints, and a wireframe. No ambiguity.</p></div></div>
+    <div class="af-step"><div class="af-num">4</div><div class="af-text"><h4>Define what success looks like before launch</h4><p>KPIs are set in advance. Not "it went well." Specific numbers with a measurement method.</p></div></div>
+    <div class="af-step"><div class="af-num">5</div><div class="af-text"><h4>Be honest about what could break</h4><p>Every PM brief ends with risks and iteration plans. The best ideas still have failure modes.</p></div></div>
+  </div>
+
+<script>
+function showView(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  const el = document.getElementById('view-' + name);
+  if (el) el.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function showCase(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  const el = document.getElementById('cs-' + id);
+  if (el) el.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function setTab(el) {
+  document.querySelectorAll('.ntab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+document.querySelectorAll('.ntab').forEach(tab => {
+  tab.addEventListener('click', function() { setTab(this); });
+});
+</script>
+</body>
+</html>
